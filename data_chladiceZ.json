@@ -1,0 +1,10 @@
+﻿{
+  "Carr1_alarm":  :=M2.4:,
+  "Carr1_chod":   :=M2.2:,
+
+  "Carr2_alarm":  :=M2.5:,
+  "Carr2_chod":   :=M2.3:,
+
+  "TeplotaVody":  :="DATA_RS485".TeplotaChladVody:,
+  "TeplotaVenkovni":="DATA_RS485".TeplotaVenkovni:,
+}

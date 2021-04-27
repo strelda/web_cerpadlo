@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>Čerpadlo | Eltek Data Viewer</title>
+    <script src="jquery.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /** here go styles specific for this screen **/
+        #panel {
+            background-image: url('cerpadlo.jpg');
+            width: 800px;
+            height: 600px;
+        }
+
+        #index_link { left: 10px; }
+
+        #k1_stats {top: 200px; left: 50px; width: 150px}
+        #k2_stats {top: 150px; left: 570px; width: 150px}
+
+        #vodaTemp {top: 470px; left: 570px; width: 170px;}
+        #venkuTemp {top: 70px; left: 0px; width: 170px;}
+        
+    </style>
+</head>
+<body>
+    <div id="panel" class="screen_panel">
+        <div class="title panel_overlay">
+            Čerpadlo
+        </div>
+    
+        <!-- links to other screens -->
+        <a href="podrobnosti.html">
+            <div id="index_link" class="screen_link panel_overlay">
+                Zobrazit podrobnosti<br />
+            </div>
+        </a>
+    
+        <div id="k1_stats" class="stats panel_overlay">
+            <div class="stat-label">Carrier 1</div>
+            <div class="stat-warning"><span id="Carr1_alarm">Alarm Carrier1</span></div>
+            <div class="stat-info">Run <span id="Carr1_chod"></span> Mh</div>
+        </div>
+    
+        <div id="k2_stats" class="stats panel_overlay">
+            <div class="stat-label">Carrier 2</div>
+            <div class="stat-warning"><span id="Carr2_alarm">Alarm Carrier2</span></div>
+            <div class="stat-info">Run <span id="Carr2_chod"></span> Mh</div>
+        </div>
+
+        <div id="vodaTemp" class="stats panel_overlay">
+            <div class="stat-info">Teplota vody <span id="TeplotaVody"></span> &deg;C</div>
+        </div>
+
+        <div id="venkuTemp" class="stats panel_overlay">
+            <div class="stat-info">Teplota venkovní <span id="TeplotaVenkovni"></span> &deg;C</div>
+        </div>
+    
+    
+    </div>
+	
+	<script>
+        // json file with data to show
+        var data_file = 'data_CladiceZ.json';
+
+        var data = {};
+
+        var value_elements = [
+            {id: 'TeplotaVody', decimals: 1},
+            {id: 'TeplotaVenkovni', decimals: 1}
+        ];
+
+        var alarm_elements = [
+            {id: 'Carr1_alarm', text: 'Alarm Carrier 1'},
+            {id: 'Carr1_chod', text: 'Chod Carrier 1'},
+
+            {id: 'Carr2_alarm', text: 'Alarm Carrier 2'},
+            {id: 'Carr2_chod', text: 'Chod Carrier 2'},
+        ];
+
+	</script>
+    <script src="functions.js"></script>
+</body>
+</html>

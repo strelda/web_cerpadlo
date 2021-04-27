@@ -1,0 +1,24 @@
+﻿{
+  "Carr1_alarm":  :=M2.4:,
+  "Carr1_chod":   :=M2.2:,
+  "Carr1_Mh":     :="DATA_RS485".ComprMh_1:,
+  "Tepl1_IN":     :="DATA_RS485".InWaterTemp_1:,
+  "Tepl1_OUT":    :="DATA_RS485".OutWaterTemp_1:,
+  "Tepl1_chladiv"::="DATA_RS485".RefrigerantTemper_1:,
+  "Frekvence1":   :="DATA_RS485".Act_ComprFreq_1:,
+  "Cerp1_Mh":     :="DATA_RS485".WaterPumpMh_1:,
+  "KodPoruchy1":  :="DATA_RS485".KodPoruchy1:,
+
+  "Carr2_alarm":  :=M2.5:,
+  "Carr2_chod":   :=M2.3:,
+  "Carr2_Mh":     :="DATA_RS485".ComprMh_2:,
+  "Tepl2_IN":     :="DATA_RS485".InWaterTemp_2:,
+  "Tepl2_OUT":    :="DATA_RS485".OutWaterTemp_2:,
+  "Tepl2_chladiv"::="DATA_RS485".RefrigerantTemper_2:,
+  "Frekvence2":   :="DATA_RS485".Act_ComprFreq_2:,
+  "Cerp2_Mh":     :="DATA_RS485".WaterPumpMh_2:,
+  "KodPoruchy2":  :="DATA_RS485".KodPoruchy2:,
+
+  "TeplotaVody":  :="DATA_RS485".TeplotaChladVody:,
+  "TeplotaVenkovni":="DATA_RS485".TeplotaVenkovni:,
+}

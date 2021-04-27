@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Čerpadlo| Eltek Data Viewer</title>
+    <script src="jquery.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /** here go styles specific for this screen **/
+        #panel {
+            background-image: url('cerpadlo.jpg');
+            width: 800px;
+            height: 600px;
+        }
+
+        #index_link {
+            left: 10px;
+        }
+
+
+        #k1_stats {top: 200px; left: 50px; width: 150px}
+        #k2_stats {top: 150px; left: 570px; width: 150px}
+        #global_stats {top: 70px; right: 10px;}
+
+        #vodaTemp {top: 470px; left: 570px; width: 170px;}
+        #venkuTemp {top: 70px; left: 0px; width: 170px;}
+        
+    </style>
+</head>
+<body>
+<div id="panel" class="screen_panel">
+
+
+    <div class="title panel_overlay">
+        Čerpadlo
+    </div>
+
+    <!-- links to other screens -->
+    <a href="index.html">
+        <div id="prehled_link" class="screen_link panel_overlay">
+            Skrýt podrobnosti<br />
+        </div>
+    </a>
+
+    <div id="k1_stats" class="stats panel_overlay">
+        <div class="stat-label">Carrier 1</div>
+        <div class="stat-warning"><span id="Carr1_alarm"></span></div>
+        <div class="stat-state"><span id="Carr1_chod"></span></div>
+        <div class="stat-info">Run <span id="Carr1_Mh"></span> Mh</div>
+        <div class="stat-info">T I <span id="Tepl1_IN"></span> &deg;</div>
+        <div class="stat-info">T II <span id="Tepl1_OUT"></span> &deg;</div>
+        <div class="stat-info">T III <span id="Tepl1_chladiv"></span> &deg;</div>
+        <div class="stat-info">Frekvence <span id="Frekvence1"></span> Hz</div>
+        <div class="stat-info">Vodní pumpa <span id="Cerp1_Mh"></span> Mh</div>
+        <div class="stat-warning">Kód poruchy<br /><span id="KodPoruchy1"></span></div>
+    </div>
+
+    <div id="k2_stats" class="stats panel_overlay">
+        <div class="stat-label">Carrier 2</div>
+        <div class="stat-warning"><span id="Carr2_alarm"></span></div>
+        <div class="stat-state"><span id="Carr2_chod"></span></div>
+        <div class="stat-info">Run <span id="Carr2_Mh"></span> Mh</div>
+        <div class="stat-info">T I <span id="Tepl2_IN"></span> &deg;</div>
+        <div class="stat-info">T II <span id="Tepl2_OUT"></span> &deg;</div>
+        <div class="stat-info">T III <span id="Tepl2_chladiv"></span> &deg;</div>
+        <div class="stat-info">Frekvence <span id="Frekvence2"></span> Hz</div>
+        <div class="stat-info">Vodní pumpa <span id="Cerp2_Mh"></span> Mh</div>
+        <div class="stat-warning">Kód poruchy<br /><span id="KodPoruchy2"></span></div>
+    </div>
+    <div id="vodaTemp" class="stats panel_overlay">
+        <div class="stat-info">Teplota vody <span id="TeplotaVody"></span> &deg;C</div>
+    </div>
+
+    <div id="venkuTemp" class="stats panel_overlay">
+        <div class="stat-info">Teplota venkovní <span id="TeplotaVenkovni"></span> &deg;C</div>
+    </div>
+</div>
+
+<script>
+    // json file with data to show
+    var data_file = 'data_chladiceR.json';
+
+    // actual data shown
+    var data = {};
+
+    // elements with no data transform
+    var value_elements = [
+        {id: 'Carr1_Mh', decimals: 1}, {id: 'Tepl1_IN', decimals: 1},{id: 'Tepl1_OUT', decimals: 1},{id: 'Tepl1_chladiv', decimals: 1},{id: 'Tepl1_Mh', decimals: 1},
+        'Frekvence1', 'Cerp1_Mh',
+        
+        {id: 'Carr2_Mh', decimals: 1}, {id: 'Tepl2_IN', decimals: 1},{id: 'Tepl2_OUT', decimals: 1},{id: 'Tepl2_chladiv', decimals: 1},{id: 'Tepl2_Mh', decimals: 1},
+        'Frekvence2', 'Cerp2_Mh'
+    ];
+
+    // elements showing run/load state
+    var state_elements = [
+        {id: 'Carr1_chod', run_id: 'k1_run', load_id: 'k1_load'},
+        {id: 'Carr2_chod', run_id: 'k2_run', load_id: 'k2_load'}
+    ];
+
+    // elements showing alarppm
+    var alarm_elements = [
+        {id: 'Carr1_alarm', text: 'Alarm Carrier 1', reversed: true},
+        {id: 'Carr2_alarm', text: 'Alarm Carrier 2', reversed: true},
+        {id: "KodPoruchy1", text: "KodPoruchy1"},
+        {id: "KodPoruchy2", text: "KodPoruchy2"}
+    ];
+
+</script>
+<script src="functions.js"></script>
+</body>
+</html>

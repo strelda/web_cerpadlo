@@ -20,5 +20,5 @@
   "KodPoruchy2":  :="DATA_RS485".KodPoruchy2:,
 
   "TeplotaVody":  :="DATA_RS485".TeplotaChladVody:,
-  "TeplotaVenkovni":="DATA_RS485".TeplotaVenkovni:,
+  "TeplotaVenkovni": :="DATA_RS485".TeplotaVenkovni:
 }

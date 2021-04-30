@@ -17,13 +17,14 @@
             left: 10px;
         }
 
+        #settings {top: 430px; left: 570px; width: 200px}
 
-        #k1_stats {top: 200px; left: 50px; width: 150px}
-        #k2_stats {top: 150px; left: 570px; width: 150px}
+        #k1_stats {top: 200px; left: 0px; width: 200px}
+        #k2_stats {top: 150px; left: 570px; width: 200px}
         #global_stats {top: 70px; right: 10px;}
 
-        #vodaTemp {top: 470px; left: 570px; width: 170px;}
-        #venkuTemp {top: 70px; left: 0px; width: 170px;}
+        #vodaTemp {top: 500px; left: 300px; width: 210px;}
+        #venkuTemp {top: 70px; left: 0px; width: 250px;}
         
     </style>
 </head>
@@ -45,27 +46,27 @@
     <div id="k1_stats" class="stats panel_overlay">
         <div class="stat-label">Carrier 1</div>
         <div class="stat-warning"><span id="Carr1_alarm"></span></div>
-        <div class="stat-state"><span id="Carr1_chod"></span></div>
+        <div class="stat-warning"><span id="Carr1_chod"></span></div>
         <div class="stat-info">Run <span id="Carr1_Mh"></span> Mh</div>
-        <div class="stat-info">T I <span id="Tepl1_IN"></span> &deg;</div>
-        <div class="stat-info">T II <span id="Tepl1_OUT"></span> &deg;</div>
-        <div class="stat-info">T III <span id="Tepl1_chladiv"></span> &deg;</div>
+        <div class="stat-info">TI <span id="Tepl1_IN"></span> &deg;C</div>
+        <div class="stat-info">TII <span id="Tepl1_OUT"></span> &deg;C</div>
+        <div class="stat-info">TIII <span id="Tepl1_chladiv"></span> &deg;C</div>
         <div class="stat-info">Frekvence <span id="Frekvence1"></span> Hz</div>
         <div class="stat-info">Vodní pumpa <span id="Cerp1_Mh"></span> Mh</div>
-        <div class="stat-warning">Kód poruchy<br /><span id="KodPoruchy1"></span></div>
+        <div class="stat-warning">Kód poruchy <span id="KodPoruchy1"></span></div>
     </div>
 
     <div id="k2_stats" class="stats panel_overlay">
         <div class="stat-label">Carrier 2</div>
         <div class="stat-warning"><span id="Carr2_alarm"></span></div>
-        <div class="stat-state"><span id="Carr2_chod"></span></div>
+        <div class="stat-warning"><span id="Carr2_chod"></span></div>
         <div class="stat-info">Run <span id="Carr2_Mh"></span> Mh</div>
-        <div class="stat-info">T I <span id="Tepl2_IN"></span> &deg;</div>
-        <div class="stat-info">T II <span id="Tepl2_OUT"></span> &deg;</div>
-        <div class="stat-info">T III <span id="Tepl2_chladiv"></span> &deg;</div>
+        <div class="stat-info">TI <span id="Tepl2_IN"></span> &deg;C</div>
+        <div class="stat-info">TII <span id="Tepl2_OUT"></span> &deg;C</div>
+        <div class="stat-info">TIII <span id="Tepl2_chladiv"></span> &deg;C</div>
         <div class="stat-info">Frekvence <span id="Frekvence2"></span> Hz</div>
         <div class="stat-info">Vodní pumpa <span id="Cerp2_Mh"></span> Mh</div>
-        <div class="stat-warning">Kód poruchy<br /><span id="KodPoruchy2"></span></div>
+        <div class="stat-warning">Kód poruchy <span id="KodPoruchy2"></span></div>
     </div>
     <div id="vodaTemp" class="stats panel_overlay">
         <div class="stat-info">Teplota vody <span id="TeplotaVody"></span> &deg;C</div>
@@ -74,6 +75,26 @@
     <div id="venkuTemp" class="stats panel_overlay">
         <div class="stat-info">Teplota venkovní <span id="TeplotaVenkovni"></span> &deg;C</div>
     </div>
+
+
+
+    <div id="settings" class="stats panel_overlay">
+        <!-- AWP_In_Variable Name='"Set_teploty".SET_teplota_MIN' -->
+        <!-- AWP_In_Variable Name='"Set_teploty".SET_teplota_MAX' -->
+        <form method="post">
+            <div class="stat-label">Změna teploty</div>
+            <div class="stat-settings">MIN = -5
+                <input name='"Set_teploty".SET_teplota_MIN' type="text" id="NastavHlMin"/>
+            </div>
+            <div class="stat-settings">MAX = 5
+                <input name='"Set_teploty".SET_teplota_MAX' type="text" id="NastavHlMax"/>
+            </div>
+            <div><input type="submit" value="OK" /></div>
+        </form>
+        </div>
+
+
+
 </div>
 
 <script>
@@ -85,26 +106,40 @@
 
     // elements with no data transform
     var value_elements = [
-        {id: 'Carr1_Mh', decimals: 1}, {id: 'Tepl1_IN', decimals: 1},{id: 'Tepl1_OUT', decimals: 1},{id: 'Tepl1_chladiv', decimals: 1},{id: 'Tepl1_Mh', decimals: 1},
-        'Frekvence1', 'Cerp1_Mh',
-        
-        {id: 'Carr2_Mh', decimals: 1}, {id: 'Tepl2_IN', decimals: 1},{id: 'Tepl2_OUT', decimals: 1},{id: 'Tepl2_chladiv', decimals: 1},{id: 'Tepl2_Mh', decimals: 1},
-        'Frekvence2', 'Cerp2_Mh',
+        {id: 'Carr1_Mh', decimals: 1}, 
+        {id: 'Tepl1_IN', decimals: 1},
+        {id: 'Tepl1_OUT', decimals: 1},
+        {id: 'Tepl1_chladiv', decimals: 1},
+        'Frekvence1', 
+        'Cerp1_Mh',
+        'KodPoruchy1',
+                
+        {id: 'Carr2_Mh', decimals: 1}, 
+        {id: 'Tepl2_IN', decimals: 1},
+        {id: 'Tepl2_OUT', decimals: 1},
+        {id: 'Tepl2_chladiv', decimals: 1},
+        'Frekvence2', 
+        'Cerp2_Mh',
+        'KodPoruchy2',
 
-        'KodPoruchy1', 'KodPoruchy2'
+        {id: 'TeplotaVody', decimals: 1},{id: 'TeplotaVenkovni', decimals: 1},
+
     ];
 
     // elements showing run/load state
     var state_elements = [
-        {id: 'Carr1_chod', run_id: 'k1_run', load_id: 'k1_load'},
-        {id: 'Carr2_chod', run_id: 'k2_run', load_id: 'k2_load'}
     ];
 
-    // elements showing alarppm
+
+    var load_color = "#0ff";
+    var off_color = "#f00";
     var alarm_elements = [
-        {id: 'Carr1_alarm', text: 'Alarm Carrier 1', reversed: true},
-        {id: 'Carr2_alarm', text: 'Alarm Carrier 2', reversed: true}
+        {"id": "Carr1_alarm", "text": "OK", "off_text": "ALARM", "color": "#0f0", "off_color": off_color},
+        {"id": "Carr2_alarm", "text": "OK", "off_text": "ALARM", "color": "#0f0", "off_color": off_color},
+        {"id": "Carr1_chod", "text": "Run", "off_text": "Load", "color": "#0f0", "off_color": load_color},
+        {"id": "Carr2_chod", "text": "Run", "off_text": "Load", "color": "#0f0", "off_color": load_color}
     ];
+
 
 </script>
 <script src="functions.js"></script>

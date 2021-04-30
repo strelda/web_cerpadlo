@@ -1,0 +1,24 @@
+﻿{
+  "Carr1_alarm":  1,
+  "Carr1_chod":   1,
+  "Carr1_Mh":     2,
+  "Tepl1_IN":     3,
+  "Tepl1_OUT":    4,
+  "Tepl1_chladiv":5,
+  "Frekvence1":   6,
+  "Cerp1_Mh":     7,
+  "KodPoruchy1":  8,
+
+  "Carr2_alarm":  0,
+  "Carr2_chod":   0,
+  "Carr2_Mh":     12,
+  "Tepl2_IN":     13,
+  "Tepl2_OUT":    14,
+  "Tepl2_chladiv":15,
+  "Frekvence2":   16,
+  "Cerp2_Mh":     17,
+  "KodPoruchy2":  18,
+
+  "TeplotaVody":  33,
+  "TeplotaVenkovni": 34
+}

@@ -1,84 +1,93 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <title>Čerpadlo | Eltek Data Viewer</title>
     <script src="jquery.js"></script>
     <link rel="stylesheet" href="style.css" />
     <style>
         /** here go styles specific for this screen **/
         #panel {
-            background-image: url('cerpadlo.jpg');
             width: 800px;
             height: 600px;
+            background-color: rgb(255,255,255);
+            background-image: url('cerpadlo.jpg');
         }
 
-        #index_link { left: 10px; }
+        #settings {bottom: 0; right: 0; width: 400px; }
 
-        #k1_stats {top: 200px; left: 50px; width: 150px}
-        #k2_stats {top: 150px; left: 570px; width: 150px}
+        #middle-middle_stats {top: 600px;left: 380px;width: 200px; }
 
-        #vodaTemp {top: 470px; left: 570px; width: 170px;}
-        #venkuTemp {top: 70px; left: 0px; width: 170px;}
-        
+        #k1_stats {top: 200px; left: 0px; width: 200px}
+        #k2_stats {top: 150px; left: 570px; width: 200px}
+        #global_stats {top: 70px; right: 10px;}
+
+        #vodaTemp {top: 500px; left: 300px; width: 210px;}
+        #venkuTemp {top: 70px; left: 0px; width: 250px;}
+
     </style>
 </head>
 <body>
-    <div id="panel" class="screen_panel">
-        <div class="title panel_overlay">
-            Čerpadlo
-        </div>
-    
-        <!-- links to other screens -->
-        <a href="podrobnosti.html">
-            <div id="index_link" class="screen_link panel_overlay">
-                Zobrazit podrobnosti<br />
-            </div>
-        </a>
-    
-        <div id="k1_stats" class="stats panel_overlay">
-            <div class="stat-label">Carrier 1</div>
-            <div class="stat-warning"><span id="Carr1_alarm">Alarm Carrier1</span></div>
-            <div class="stat-info">Run <span id="Carr1_chod"></span> Mh</div>
-        </div>
-    
-        <div id="k2_stats" class="stats panel_overlay">
-            <div class="stat-label">Carrier 2</div>
-            <div class="stat-warning"><span id="Carr2_alarm">Alarm Carrier2</span></div>
-            <div class="stat-info">Run <span id="Carr2_chod"></span> Mh</div>
-        </div>
+<div id="panel" class="screen_panel">
 
-        <div id="vodaTemp" class="stats panel_overlay">
-            <div class="stat-info">Teplota vody <span id="TeplotaVody"></span> &deg;C</div>
-        </div>
-
-        <div id="venkuTemp" class="stats panel_overlay">
-            <div class="stat-info">Teplota venkovní <span id="TeplotaVenkovni"></span> &deg;C</div>
-        </div>
-    
-    
+    <div class="title panel_overlay">
+        Čerpadlo
     </div>
-	
-	<script>
-        // json file with data to show
-        var data_file = 'data_CladiceZ.json';
 
-        var data = {};
+    <a href="podrobnosti.html">
+        <div id="index_link" class="screen_link panel_overlay">
+            Zobrazit podrobnosti<br />
+        </div>
+    </a>
 
-        var value_elements = [
-            {id: 'TeplotaVody', decimals: 1},
-            {id: 'TeplotaVenkovni', decimals: 1}
+    <div id="k1_stats" class="stats panel_overlay">
+        <div class="stat-label">Carrier 1</div>
+        <div class="stat-warning"><span id="Carr1_alarm">chybějící data</span></div>
+        <div class="stat-warning"><span id="Carr1_chod">chybějící data</span></div>
+    </div>
+
+    <div id="k2_stats" class="stats panel_overlay">
+        <div class="stat-label">Carrier 2</div>
+        <div class="stat-warning"><span id="Carr2_alarm">chybějící data</span></div>
+        <div class="stat-warning"><span id="Carr2_chod">chybějící data</span></div>
+    </div>
+
+    <div id="vodaTemp" class="stats panel_overlay">
+        <div class="stat-info">Teplota vody <span id="TeplotaVody"></span> &deg;C</div>
+    </div>
+
+    <div id="venkuTemp" class="stats panel_overlay">
+        <div class="stat-info">Teplota venkovní <span id="TeplotaVenkovni"></span>&deg;C</div>
+    </div>
+
+
+</div>
+
+<script>
+    // json file with data to show
+    var data_file = 'data_chladiceZ.json';
+
+    // actual data shown
+    var data = {};
+
+    // elements with no data transform
+    var value_elements = [
+    {id: 'TeplotaVody', decimals: 1},{id: 'TeplotaVenkovni', decimals: 1},
+    ];
+
+    var state_elements = [
         ];
+        
+    var load_color = "#0ff";
+    var off_color = "#f00";
+    var alarm_elements = [
+        {"id": "Carr1_alarm", "text": "OK", "off_text": "ALARM", "color": "#0f0", "off_color": off_color},
+        {"id": "Carr2_alarm", "text": "OK", "off_text": "ALARM", "color": "#0f0", "off_color": off_color},
+        {"id": "Carr1_chod", "text": "Run", "off_text": "Load", "color": "#0f0", "off_color": load_color},
+        {"id": "Carr2_chod", "text": "Run", "off_text": "Load", "color": "#0f0", "off_color": load_color}
+    ];
 
-        var alarm_elements = [
-            {id: 'Carr1_alarm', text: 'Alarm Carrier 1'},
-            {id: 'Carr1_chod', text: 'Chod Carrier 1'},
-
-            {id: 'Carr2_alarm', text: 'Alarm Carrier 2'},
-            {id: 'Carr2_chod', text: 'Chod Carrier 2'},
-        ];
-
-	</script>
-    <script src="functions.js"></script>
+</script>
+<script src="functions.js"></script>
 </body>
 </html>

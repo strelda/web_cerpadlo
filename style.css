@@ -88,9 +88,13 @@ a {
 .stats {
     width: 100px;
     padding: 10px 20px 10px 10px;
-    font-size: 15px;
+    font-size: 18px;
     text-align: right;
     position: absolute;
+}
+
+.stats div {
+    margin: 3px;
 }
 
 .link-note {
@@ -114,6 +118,7 @@ a {
 .stat-state {
     color: #0f0;
 }
+
 
 /* side panel on screen */
 .side-panel {

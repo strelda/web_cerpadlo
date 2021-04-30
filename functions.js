@@ -8,9 +8,15 @@ function setValue(value_element) {
         id = value_element.id;
         decimals = value_element.decimals ? value_element.decimals : decimals;
     }
-    var value = data[id];
+    var value = parseFloat(data[id]).toFixed(decimals);
 
-    $('#' + id).text(parseFloat(value).toFixed(decimals));
+    var e = $('#' + id);
+
+    if (e.is('input')) {
+        $(e).attr('value', value);
+    } else {
+        $(e).text(value);
+    }
 }
 
 function setState(state_element) {
@@ -43,8 +49,14 @@ function setAlarm(alarm_element) {
     var e = $('#' + alarm_element.id);
     if (alarm) {
         e.text(alarm_element.text);
+        if (alarm_element.color) {
+            $(e).css('color', alarm_element.color);
+        }
     } else {
         e.text(alarm_element.off_text ? alarm_element.off_text : '');
+        if (alarm_element.off_color) {
+            $(e).css('color', alarm_element.off_color);
+        }
     }
 }
 

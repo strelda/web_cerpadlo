@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Čerpadlo | Eltek Data Viewer</title>
+    <title>Cooler | Eltek Data Viewer</title>
     <script src="jquery.js"></script>
     <link rel="stylesheet" href="style.css" />
     <style>
@@ -22,7 +22,7 @@
         #k2_stats {top: 150px; left: 570px; width: 200px}
         #global_stats {top: 70px; right: 10px;}
 
-        #vodaTemp {top: 500px; left: 300px; width: 210px;}
+        #vodaTemp {top: 500px; left: 300px; width: 240px;}
         #venkuTemp {top: 70px; left: 0px; width: 250px;}
 
     </style>
@@ -31,33 +31,35 @@
 <div id="panel" class="screen_panel">
 
     <div class="title panel_overlay">
-        Čerpadlo
+        Cooler
     </div>
 
     <a href="podrobnosti.html">
         <div id="index_link" class="screen_link panel_overlay">
-            Zobrazit podrobnosti<br />
+            Show details<br />
         </div>
     </a>
 
     <div id="k1_stats" class="stats panel_overlay">
-        <div class="stat-label">Carrier 1</div>
-        <div class="stat-warning"><span id="Carr1_alarm">chybějící data</span></div>
-        <div class="stat-warning"><span id="Carr1_chod">chybějící data</span></div>
+        <div class="stat-label">Cooler 1</div>
+        <div class="stat-warning"><span id="ErrorCom1"></span></div>
+        <div class="stat-warning"><span id="Carr1_alarm">missing data</span></div>
+        <div class="stat-warning"><span id="Carr1_chod">missing data</span></div>
     </div>
 
     <div id="k2_stats" class="stats panel_overlay">
-        <div class="stat-label">Carrier 2</div>
-        <div class="stat-warning"><span id="Carr2_alarm">chybějící data</span></div>
-        <div class="stat-warning"><span id="Carr2_chod">chybějící data</span></div>
+        <div class="stat-label">Cooler 2</div>
+        <div class="stat-warning"><span id="ErrorCom2"></span></div>
+        <div class="stat-warning"><span id="Carr2_alarm">missing data</span></div>
+        <div class="stat-warning"><span id="Carr2_chod">missing data</span></div>
     </div>
 
     <div id="vodaTemp" class="stats panel_overlay">
-        <div class="stat-info">Teplota vody <span id="TeplotaVody"></span> &deg;C</div>
+        <div class="stat-info">Water temperature <span id="TeplotaVody"></span> &deg;C</div>
     </div>
 
     <div id="venkuTemp" class="stats panel_overlay">
-        <div class="stat-info">Teplota venkovní <span id="TeplotaVenkovni"></span>&deg;C</div>
+        <div class="stat-info">Outdoor temperature <span id="TeplotaVenkovni"></span>&deg;C</div>
     </div>
 
 
@@ -65,14 +67,14 @@
 
 <script>
     // json file with data to show
-    var data_file = 'data_chladiceZ.json';
+    var data_file = 'data_chladiceZ_test.json';
 
     // actual data shown
     var data = {};
 
     // elements with no data transform
     var value_elements = [
-    {id: 'TeplotaVody', decimals: 1},{id: 'TeplotaVenkovni', decimals: 1},
+    {id: 'TeplotaVody', decimals: 1},{id: 'TeplotaVenkovni', decimals: 1}
     ];
 
     var state_elements = [
@@ -84,7 +86,9 @@
         {"id": "Carr1_alarm", "text": "OK", "off_text": "ALARM", "color": "#0f0", "off_color": off_color},
         {"id": "Carr2_alarm", "text": "OK", "off_text": "ALARM", "color": "#0f0", "off_color": off_color},
         {"id": "Carr1_chod", "text": "Run", "off_text": "Load", "color": "#0f0", "off_color": load_color},
-        {"id": "Carr2_chod", "text": "Run", "off_text": "Load", "color": "#0f0", "off_color": load_color}
+        {"id": "Carr2_chod", "text": "Run", "off_text": "Load", "color": "#0f0", "off_color": load_color},
+        {"id": "ErrorCom1", "text": "", "off_text": "Communication Error", "color": "#0f0", "off_color": off_color},
+        {"id": "ErrorCom2", "text": "", "off_text": "Communication Error", "color": "#0f0", "off_color": off_color}
     ];
 
 </script>

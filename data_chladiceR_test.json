@@ -20,5 +20,9 @@
   "KodPoruchy2":  18,
 
   "TeplotaVody":  33,
-  "TeplotaVenkovni": 34
+  "TeplotaVenkovni": 34,
+  
+  "TempOffset": 3,
+  "ErrorCom1": 0,
+  "ErrorCom2": 1
 }

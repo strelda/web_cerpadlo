@@ -6,5 +6,8 @@
   "Carr2_chod":   0,
 
   "TeplotaVody":  33,
-  "TeplotaVenkovni": 34
+  "TeplotaVenkovni": 34,
+  
+  "ErrorCom1": 0,
+  "ErrorCom2": 1
 }

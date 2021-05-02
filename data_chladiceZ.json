@@ -6,5 +6,8 @@
   "Carr2_chod":   :=M2.3:,
 
   "TeplotaVody":  :="DATA_RS485".TeplotaChladVody:,
-  "TeplotaVenkovni": :="DATA_RS485".TeplotaVenkovni:
+  "TeplotaVenkovni": :="DATA_RS485".TeplotaVenkovni:,
+  
+  "ErrorCom1": :="DATA_WEB".ErrorCom1:,
+  "ErrorCom2": :="DATA_WEB".ErrorCom2:
 }
